@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tiles {
+    position: relative;
+}
+
+.tiles:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    background-repeat: repeat;
+    background: url('data:image/svg+xml;utf8,<svg height="48" width="48" fill="none" stroke="white" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" /></svg>');
+    opacity: .05;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.25s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
