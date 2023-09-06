@@ -7,7 +7,7 @@
 <template>
     <div class="h-full flex flex-col justify-center relative">
         <div class="flex flex-col space-y-6 group">
-            <RouterLink v-for="route in $router.getRoutes()" :key="route.path" :to="route.path" class="font-bold text-xl transition-all duration-200 ease-in-out hover:!text-2xl group-hover:text-xl hover:!text-white group-hover:text-slate-400" :class="$route.name === route.name ? 'text-2xl text-white' : 'text-slate-400'">
+            <RouterLink v-for="route in $router.getRoutes()" :key="route.path" :to="route.path" class="font-bold transition-all duration-200 ease-in-out hover:!text-2xl group-hover:text-xl hover:!text-white group-hover:text-slate-400" :class="$route.name === route.name ? 'text-2xl text-white' : 'text-slate-400 text-xl'">
                 {{ $route.name === route.name ? `</${route.meta.title}>` : route.meta.title }}
             </RouterLink>
         </div>
