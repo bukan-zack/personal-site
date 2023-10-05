@@ -12,7 +12,7 @@
             </RouterLink>
         </div>
         <div class="mt-6 md:mt-0 md:absolute bottom-0 space-x-6">
-            <a class="text-slate-400 hover:text-white tranition-all duration-200 ease-in-out" href="https://github.com/jekkeryy"><FontAwesomeIcon :icon="faGithub" size="xl" /></a>
+            <a class="text-slate-400 hover:text-white tranition-all duration-200 ease-in-out" href="https://github.com/zackrsli"><FontAwesomeIcon :icon="faGithub" size="xl" /></a>
             <a class="text-slate-400 hover:text-white tranition-all duration-200 ease-in-out" href="https://www.linkedin.com/in/zackry-rosli"><FontAwesomeIcon :icon="faLinkedin" size="xl" /></a>
         </div>
     </div>
