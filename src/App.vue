@@ -1,76 +1,112 @@
 <script setup lang="ts">
-    import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-    import { faGithub, faLinkedin, faTwitter, faGolang, faRust, faVuejs, faReact } from "@fortawesome/free-brands-svg-icons";
-    import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+    import { computed, onMounted, ref } from "vue";
+    import Navigation from "./components/Navigation.vue";
+    import { RouterView } from "vue-router";
+
+    const cursorXpos = ref(0);
+    const cursorYpos = ref(0);
+    const hideCursor = ref(true);
+    const cursor = computed(() => `transform: translateX(${cursorXpos.value}px) translateY(${cursorYpos.value}px) translateZ(0) translate3d(0, 0, 0);`);
+
+    onMounted(() => {
+        document.addEventListener("mousemove", (e: MouseEvent) => {
+            setTimeout(() => {
+                cursorXpos.value = e.clientX - 15;
+                cursorYpos.value = e.clientY - 15;
+            }, 100);
+        });
+
+        document.addEventListener("mouseenter", () => {
+            hideCursor.value = false;
+        });
+
+        document.addEventListener("mouseleave", () => {
+            hideCursor.value = true;
+        });
+    });
 </script>
 <template>
     <div class="min-h-screen tiles">
-        <Transition name="fade" appear>
-            <div class="mx-auto max-w-3xl px-6 py-12">
-                <div class="flex flex-col justify-center ring ring-1 ring-zinc-800/50 rounded-xl flex flex-col p-8 bg-gradient-to-b from-zinc-800/60 to-transparent col-span-4">
-                    <h1 class="font-semibold text-4xl text-zinc-100 tracking-wide">Software Developer. Caffeine Addict.</h1>
-                    <p class="text-zinc-400 mt-2">
-                        Hello there! I am Zackry, a software developer from Malaysia, with approximately 3 years of experience in Go. I am currently working with caffeine addicts at BerryByte Limited.
-                    </p>
-                    <div class="mt-4 space-x-6 text-zinc-400">
-                        <a href="https://github.com/zackrsli" class="hover:text-zinc-200 transition duration-300 ease-in-out">
-                            <FontAwesomeIcon :icon="faGithub" size="xl" />
-                        </a>
-                        <a href="https://twitter.com/zackrsli" class="hover:text-zinc-200 transition duration-300 ease-in-out">
-                            <FontAwesomeIcon :icon="faTwitter" size="xl" />
-                        </a>
-                        <a href="https://linkedin.com/in/zackry-rosli" class="hover:text-zinc-200 transition duration-300 ease-in-out">
-                            <FontAwesomeIcon :icon="faLinkedin" size="xl" />
-                        </a>
-                        <a href="mailto:zackry@berrybyte.net" class="hover:text-zinc-200 transition duration-300 ease-in-out">
-                            <FontAwesomeIcon :icon="faEnvelope" size="xl" />
-                        </a>
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center mt-8">
-                    <h1 class="text-zinc-200 text-3xl">Things I love</h1>
-                    <div class="mt-4 space-x-6 text-zinc-400">
-                        <a href="https://go.dev" class="hover:text-zinc-200 transition duration-300 ease-in-out">
-                            <FontAwesomeIcon :icon="faGolang" size="xl" />
-                        </a>
-                        <a href="https://rust-lang.org" class="hover:text-zinc-200 transition duration-300 ease-in-out">
-                            <FontAwesomeIcon :icon="faRust" size="xl" />
-                        </a>
-                        <a href="https://vuejs.org" class="hover:text-zinc-200 transition duration-300 ease-in-out">
-                            <FontAwesomeIcon :icon="faVuejs" size="xl" />
-                        </a>
-                        <a href="https://react.dev" class="hover:text-zinc-200 transition duration-300 ease-in-out">
-                            <FontAwesomeIcon :icon="faReact" size="xl" />
-                        </a>
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center mt-8">
-                    <h1 class="text-zinc-200 text-3xl">Work</h1>
-                    <div class="mt-4 flex flex-col justify-center ring ring-1 ring-zinc-800/50 rounded-xl flex flex-col p-8 bg-gradient-to-b from-zinc-800/60 to-transparent col-span-4">
-                        <h2 class="text-xl text-zinc-100 tracking-wide">BerryByte Limited</h2>
-                        <p class="text-zinc-400 mt-1">
-                            Powerful & affordable. Dedicated hardware designed with customer satisfaction in mind, DDoS protected network, and a custom dashboard to manage your services.
-                        </p>
-                        <h3 class="text-lg mt-2 text-zinc-100">Position</h3>
-                        <p class="text-zinc-400 mt-1">
-                            Software Developer    
-                        </p>
-                        <h3 class="text-lg mt-2 text-zinc-100">From</h3>
-                        <p class="text-zinc-400 mt-1">
-                            2022 — Present   
-                        </p>
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center mt-8">
-                    <h1 class="text-zinc-200 text-3xl">Projects</h1>
-                    <p class="mt-4 text-zinc-400">Unfortunately, there are no active projects... yet.</p>
-                </div>
-                <div class="flex flex-col justify-center mt-8">
-                    <h1 class="text-zinc-200 text-3xl">Posts</h1>
-                    <p class="mt-4 text-zinc-400">Unfortunately, there are no posts... yet.</p>
-                </div>
-                <p class="mt-8 text-zinc-500">&copy; 2023 Zackry Rosli. All rights reserved.</p>
-            </div>
-        </Transition>
+        <div :class="['cursor', hideCursor && 'cursor-hide']" :style="cursor"></div>
+        <Navigation />
+        <div class="h-full mx-auto max-w-7xl px-6 py-12">
+            <RouterView v-slot="{ Component }">
+                <component :is="Component" />
+            </RouterView>
+            <footer class="mt-8 text-zinc-500">
+                &copy; 2023 Zackry Rosli. All rights reserved.
+            </footer>
+        </div>
     </div>
 </template>
+
+<style scoped>
+    .tiles {
+        position: relative;
+    }
+
+    .tiles:before {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        background-repeat: repeat;
+        background: url('data:image/svg+xml;utf8,<svg height="84" width="84" fill="none" stroke="white" xmlns="http://www.w3.org/2000/svg"><rect width="84" height="84" /></svg>');
+        opacity: .035;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .cursor {
+        @apply hidden md:block border border-2 rounded-full border-zinc-600 pointer-events-none cursor-none;
+        
+        z-index: 1;
+        top: 0;
+        left: 0;
+        position: fixed;
+        width: 30px;
+        height: 30px;
+        backface-visibility: hidden;
+        transition: opacity 1000ms ease-in-out;
+    }
+
+    .cursor-hide {
+        opacity: 0;
+        width: 40px;
+        height: 40px;
+        transition: width 250ms ease-in-out, height 250ms ease-in-out, opacity 250ms ease-in-out;
+    }
+</style>
+
+<style>
+    ::-webkit-scrollbar {
+        background: none;
+        width: 16px;
+        height: 16px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border: solid 0 rgb(0 0 0 / 0%);
+        border-right-width: 4px;
+        border-left-width: 4px;
+        -webkit-border-radius: 9px 4px;
+        -webkit-box-shadow: inset 0 0 0 4px theme(colors.zinc.600 / 50%);
+    }
+
+    ::-webkit-scrollbar-track-piece {
+        margin: 4px 0;
+    }
+
+    ::-webkit-scrollbar-thumb:horizontal {
+        border-right-width: 0;
+        border-left-width: 0;
+        border-top-width: 4px;
+        border-bottom-width: 4px;
+        -webkit-border-radius: 4px 9px;
+    }
+
+    ::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+</style>
