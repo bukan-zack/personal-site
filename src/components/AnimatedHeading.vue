@@ -1,20 +1,25 @@
 <script setup lang="ts">
-    const props = defineProps({
+    const { text, size } = defineProps({
         text: { type: String, required: true },
+        size: { type: String, required: true, default: '1' },
     });
+
+    const words = text.split(" ");
 </script>
 
 <template>
-    <h1 class="font-semibold text-6xl md:text-9xl uppercase text-zinc-100 tracking-wider">
-        <span
-            v-for="(letter, index) in props.text.split('')"
-            :key="index"
-            class="animate-letter"
-            :style="{ 'animation-delay': index * 50 + 'ms', 'transition-delay': index * 25 + 'ms' }"
-        >
-            {{ letter }}
-        </span>
-    </h1>
+    <div class="w-full space-x-3">
+        <h1 v-for="(word, index) in words" :key="index" :class="['inline font-semibold uppercase text-zinc-100 tracking-wider', size === '1' ? 'text-5xl md:text-8xl' : 'text-4xl md:text-5xl']">
+            <span
+                v-for="(letter, index) in word.split('')"
+                :key="index"
+                class="animate-letter"
+                :style="{ 'animation-delay': index * 50 + 'ms', 'transition-delay': index * 25 + 'ms' }"
+            >
+                {{ letter }}
+            </span>
+        </h1>
+    </div>
 </template>
 
 <style scoped>
