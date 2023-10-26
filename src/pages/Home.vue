@@ -6,7 +6,7 @@
     import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 </script>
 <template>
-    <AnimatedHeading text="Software_Developer" />
+    <AnimatedHeading text="About" />
     <AnimatedText class="mt-4 max-w-3xl">
         Hello there! I am Zackry, a software developer from Malaysia, with approximately 3 years of experience in Go. I am currently working with caffeine addicts at BerryByte Limited.
     </AnimatedText>

@@ -5,12 +5,12 @@
 </script>
 
 <template>
-    <h1 class="font-semibold text-6xl uppercase text-zinc-100 tracking-wider">
+    <h1 class="font-semibold text-6xl md:text-9xl uppercase text-zinc-100 tracking-wider">
         <span
             v-for="(letter, index) in props.text.split('')"
             :key="index"
             class="animate-letter"
-            :style="{ 'animation-delay': index * 80 + 'ms', 'transition-delay': index * 50 + 'ms' }"
+            :style="{ 'animation-delay': index * 50 + 'ms', 'transition-delay': index * 25 + 'ms' }"
         >
             {{ letter }}
         </span>
