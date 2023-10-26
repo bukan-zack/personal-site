@@ -33,7 +33,7 @@
             <RouterView v-slot="{ Component }">
                 <component :is="Component" />
             </RouterView>
-            <footer class="mt-8 text-zinc-500">
+            <footer class="mt-8 text-zinc-500 text-xs">
                 &copy; 2023 Zackry Rosli. All rights reserved.
             </footer>
         </div>
