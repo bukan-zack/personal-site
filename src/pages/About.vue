@@ -9,7 +9,7 @@
     <AnimatedHeading size="1" text="About" />
     <AnimatedText class="mt-4 max-w-3xl">
         Hello traveller, welcome to my not-so-perfect website! My name is Zackry Rosli, a software developer
-        from Malaysia with approximately 3 years of experience in Go. I am working with caffeine
+        from Malaysia with approximately 3 years of experience in Go. I am currently working with caffeine
         addicts at BerryByte Limited (psttt, check them out while you are here). If you are interested in working
         together, do not hesitate to reach me out!
     </AnimatedText>
