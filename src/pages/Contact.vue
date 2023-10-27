@@ -7,7 +7,7 @@
 </script>
 
 <template>
-    <AnimatedHeading text="Contact" />
+    <AnimatedHeading size="1" text="Contact" />
     <AnimatedSlot class="mt-6">
         <div class="flex flex-col space-y-6 text-zinc-100 text-lg md:text-xl">
             <div class="flex flex-row">
