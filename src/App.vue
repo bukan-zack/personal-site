@@ -33,7 +33,7 @@
             <RouterView v-slot="{ Component }">
                 <component :is="Component" />
             </RouterView>
-            <footer class="mt-8 text-zinc-500">
+            <footer class="mt-8 text-zinc-100">
                 &copy; 2023 Zackry Rosli. All rights reserved.
             </footer>
         </div>
@@ -59,9 +59,9 @@
     }
 
     .cursor {
-        @apply hidden md:block border border-2 rounded-full border-zinc-600 pointer-events-none cursor-none;
+        @apply hidden md:block rounded-full bg-zinc-100 pointer-events-none cursor-none;
         
-        z-index: 1;
+        z-index: 100;
         top: 0;
         left: 0;
         position: fixed;
@@ -69,6 +69,7 @@
         height: 30px;
         backface-visibility: hidden;
         transition: opacity 1000ms ease-in-out;
+        mix-blend-mode: difference;
     }
 
     .cursor-hide {
@@ -90,8 +91,7 @@
         border: solid 0 rgb(0 0 0 / 0%);
         border-right-width: 4px;
         border-left-width: 4px;
-        -webkit-border-radius: 9px 4px;
-        -webkit-box-shadow: inset 0 0 0 4px theme(colors.zinc.600 / 50%);
+        -webkit-box-shadow: inset 0 0 0 4px theme(colors.zinc.100 / 20%);
     }
 
     ::-webkit-scrollbar-track-piece {

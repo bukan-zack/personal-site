@@ -1,7 +1,9 @@
 <template>
-    <Transition name="fade" appear>
-        <slot></slot>
-    </Transition>
+    <div class="relative overflow-hidden">
+        <Transition name="fade" appear>
+            <slot></slot>
+        </Transition>
+    </div>
 </template>
 
 <style scoped>

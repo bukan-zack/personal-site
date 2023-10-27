@@ -4,7 +4,7 @@
 
 <template>
     <AnimatedSlot>
-        <p class="text-zinc-400 text-lg md:text-xl">
+        <p class="text-zinc-100 text-lg md:text-xl">
             <slot></slot>
         </p>
     </AnimatedSlot>

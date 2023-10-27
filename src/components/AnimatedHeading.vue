@@ -8,8 +8,8 @@
 </script>
 
 <template>
-    <div class="w-full space-x-3">
-        <h1 v-for="(word, index) in words" :key="index" :class="['inline font-semibold uppercase text-zinc-100 tracking-wider', size === '1' ? 'text-5xl md:text-8xl' : 'text-4xl md:text-5xl']">
+    <div class="w-full relative md:space-x-3 overflow-hidden">
+        <h1 v-for="(word, index) in words" :key="index" :class="['md:inline font-semibold uppercase text-zinc-100 tracking-wider', size === '1' ? 'text-5xl md:text-8xl' : 'text-4xl md:text-5xl']">
             <span
                 v-for="(letter, index) in word.split('')"
                 :key="index"
