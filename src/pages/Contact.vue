@@ -31,7 +31,7 @@
             <div class="flex flex-row">
                 <a href="mailto:zackry@berrybyte.net">
                     <FontAwesomeIcon :icon="faEnvelope" size="xl" class="mr-3" />
-                    zackry@berrybyte.net
+                    me@zackryrosli.com
                 </a>
             </div>
         </div>
