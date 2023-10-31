@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="flex flex-row">
-                <a href="mailto:zackry@berrybyte.net">
+                <a href="mailto:me@zackryrosli.com">
                     <FontAwesomeIcon :icon="faEnvelope" size="xl" class="mr-3" />
                     me@zackryrosli.com
                 </a>
